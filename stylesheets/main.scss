@@ -1,0 +1,198 @@
+@import "base";
+
+body, html {
+	background: $main-background-color;
+	font-color: $main-font-color;
+	font-size: $root-font-size;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	min-width: 738px;
+}
+
+a {
+	color: $link-color;
+
+	&:hover {
+		color: $link-hover-color;
+	}
+}
+
+.logout a {
+	color: darken($alternative-font-color, 10%);
+
+	&:hover {
+		color: $link-alternative-hover-color;
+	}
+}
+
+header {
+	nav {
+		@include reflection-gradient($nav-gradient-start, $nav-gradient-end);
+		height: $nav-height;
+		border-bottom: 1px solid $nav-border-color;
+		font-size: $nav-font-size;
+		font-weight: bold;
+		text-align: right;
+		margin: 0;
+		padding: 0;
+		behavior: url(PIE.htc);
+
+		ul {
+			@include no-bullets;
+			position: relative;
+			bottom: -10px;
+			margin: 0;
+			padding: 0;
+
+			> li {
+				@include inline-block;
+
+				&.active {
+					position: relative;
+					font-size: $nav-increased-font-size;
+					top: -1px; // compensate borders of other elements
+				}
+
+				& + li {
+					margin-left: 15px;
+				}
+			}
+
+			&.account-info > li + li {
+				margin-left: 10px;
+			}
+		}
+
+		.sections {
+			float: left;
+			z-index: 10;
+			text-align: left;
+			@extend %clearfix;
+		}
+	}
+
+	menu {
+		margin: 0;
+		padding: 0;
+		border-bottom: 1px solid $menu-border-color;
+		text-align: right;
+		-webkit-box-shadow: 0px 1px 2px 0px rgba(195, 195, 194, 1);
+		-moz-box-shadow:    0px 1px 2px 0px rgba(195, 195, 194, 1);
+		box-shadow:         0px 1px 2px 0px rgba(195, 195, 194, 1);
+		height: $menu-height;
+
+		@include two-points-gradient($menu-gradient-start, $menu-gradient-end);
+
+		button, input {
+			@include border-radius($control-radius);
+			outline: none;
+			color: $control-color;
+			text-align: left;
+			color: $button-font-color;
+			font-size: $button-font-size;
+			behavior: url(PIE.htc);
+
+			.icon-plus {
+				position: relative;
+				font-size: 16px;
+				font-weight: bold;
+				margin-right: 6px;
+				vertical-align: middle;
+				top: -1px;
+			}
+		}
+
+		button, button:visited, button:focus {
+			$button-gradient-color-1: #f2f3f5;
+			$button-gradient-color-2: #f0f2f3;
+			$button-gradient-color-3: #dedfe4;
+			$button-gradient-color-4: #dedfe3;
+			$button-gradient-darken-hover: 3%;
+			$button-gradient-darken-active: 8%;
+			@include button-gradient($button-gradient-color-1, 
+									 $button-gradient-color-2, 
+									 $button-gradient-color-3, 
+									 $button-gradient-color-4);
+			border: 1px solid $button-border-color;
+			border-top: 1px solid darken($button-border-color, 5%);
+			outline: none;
+			padding-left: 7px;
+			height: 20px;
+
+			&:hover {
+				@include button-gradient(darken($button-gradient-color-1, $button-gradient-darken-hover), 
+									 	 darken($button-gradient-color-2, $button-gradient-darken-hover), 
+									 	 darken($button-gradient-color-3, $button-gradient-darken-hover), 
+									 	 darken($button-gradient-color-4, $button-gradient-darken-hover));
+				behavior: url(PIE.htc);
+			}
+
+			&:active {
+				@include button-gradient(darken($button-gradient-color-1, $button-gradient-darken-active), 
+									 	 darken($button-gradient-color-2, $button-gradient-darken-active), 
+									 	 darken($button-gradient-color-3, $button-gradient-darken-active), 
+									 	 darken($button-gradient-color-4, $button-gradient-darken-active));
+				border: 1px solid darken($button-border-color, $button-gradient-darken-active);
+				border: 1px solid darken($button-border-color, $button-gradient-darken-active + 10%);
+				behavior: url(PIE.htc);
+			}
+		}
+
+		input[type="checkbox"] {
+			position: relative;
+			bottom: -16px;
+		}
+
+		input[type="search"], button {
+			position: relative;
+			bottom: -12px;
+		}
+
+		input[type="search"] {
+			border: 1px solid $search-border-color;
+			border-top: 1px solid darken($search-border-color, 5%);
+			line-height: 1.4em;
+			width: 133px;
+			padding-top: 3px;
+			padding-left: 5px;
+			width: 130px;
+
+			&:focus {
+				border: 1px solid darken($search-border-color, 5%);
+				border-top: 1px solid darken($search-border-color, 10%);
+			}
+		}
+
+		.list-control {
+			float: left;
+			@extend %clearfix;
+		}
+	}
+}
+
+td {
+	padding: 11px 0 9px 0;
+}
+
+tr {
+	border-bottom: 1px solid $table-border-color;
+}
+
+th {
+	color: $alternative-font-color;
+	font-weight: normal;
+	padding: 9px 0 10px 0;
+}
+
+.alt-colored {
+	color: $alternative-font-color;
+}
+
+.one-line {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.to-right {
+	text-align: right;
+}

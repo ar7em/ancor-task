@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" id="ng-app" ng-app="ancorApp"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" id="ng-app" ng-app="ancorApp"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" ng-app="ancorApp"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" ng-app="ancorApp"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Тестовая задачка от «АНКОР»</title>
+        <meta name="description" content="Тестовая задачка от «АНКОР»">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- New html5 tags support -->
+        <!--[if lt IE 9]>
+            <script src="scripts/js/vendor/html5shiv.js"></script>
+        <![endif]-->
+        <link rel="stylesheet" href="stylesheets/css/normalize.css">
+        <script src="scripts/js/vendor/modernizr-2.6.2.min.js"></script>
+        <!-- JSON.stringify polyfill -->
+        <!--[if lte IE 8]>
+            <script src="scripts/js/vendor/json2.js"></script>
+        <![endif]-->
+        <link rel="stylesheet" href="stylesheets/css/main.css">
+    </head>
+    <body ng-controller="CustomerListCtrl">
+        <header>
+            <nav>
+                <div class="container">
+                    <ul class="sections">
+                        <li><a href="#">Платежи</a></li>
+                        <li><a href="#">Архив платежей</a></li>
+                        <li><a href="#">Поставщики услуг</a></li>
+                        <li class="active">Плательщики</li>
+                    </ul>
+                    <ul class="account-info">
+                        <li>Иван Иванович Иванов</li>
+                        <li class="logout"><a href="#">Выход</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <menu>
+                <div class="container">
+                    <div class="list-control">
+                        <div class="clmn-1 to-right">
+                            <input type="checkbox" ng-model="master">
+                        </div>
+                        <div class="clmn-8">
+                            <button><span class="icon-plus">+</span>Создать плательщика</button>
+                        </div>
+                    </div>
+                    <input type="search" placeholder="Поиск" ng-model="query">
+                </div>
+            </menu>
+        </head>
+        <main>
+            <div class="container ng-cloak">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="clmn-1"></th>
+                            <th class="clmn-9">Плательщик</th>
+                            <th class="clmn-4 clmn-append-2">Электронная почта</th>
+                            <th class="clmn-4">Телефон</th>
+                            <th class="clmn-6 clmn-last">Группы</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="customer in customers | filter:query">
+                            <td class="clmn-1 to-right"><input type="checkbox" id="checkbox-{{customer.id}}" ng-checked="master"></td>
+                            <td class="clmn-9">{{customer.lastname}} {{customer.firstname}} {{customer.middlename}}</td>
+                            <td class="clmn-4 clmn-append-2 one-line">{{customer.email}}</td>
+                            <td class="clmn-4 one-line">{{customer.phone}}</td>
+                            <td class="clmn-6 clmn-last alt-colored">{{customer.groups}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="scripts/js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="scripts/js/vendor/angular.min.js"></script>
+        <script src="scripts/js/main.js"></script>
+        <script src="scripts/js/placeholder.js"></script>
+    </body>
+</html>

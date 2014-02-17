@@ -1,0 +1,124 @@
+$root-font-size: 10px;
+$main-font-color: black;
+$alternative-font-color: #998f80;
+$main-background-color: #edeae5;
+$link-color: #57789f;
+$link-hover-color: lighten(saturate( $link-color, 40% ), 10%);
+$link-alternative-hover-color: darken(saturate( $alternative-font-color, 20% ), 25%);
+
+$nav-height: 38px;
+$nav-font-size: 11px;
+$nav-increased-font-size: 13px;
+$nav-gradient-start: #f4f4f6;
+$nav-gradient-end: #dddee3;
+$nav-border-color: #cdced3;
+
+$menu-height: 45px;
+$menu-gradient-start: #dcdde2;
+$menu-gradient-end: #dbdde3;
+$menu-border-color: #c3c3c2;
+
+$button-font-size: 10px;
+$button-font-color: #4d4f54;
+$button-border-color: #b0b1b3;
+$search-border-color: #c0c1c3;
+$control-radius: 4px;
+$control-color: #6e747b;
+
+$table-border-color: #c9c8c7;
+
+$blueprint-grid-columns: 20;
+$blueprint_grid_width: 26px;
+$blueprint-grid-margin: 11px;
+
+
+@mixin two-points-gradient($start, $end) {
+	background: $start; /* Old browsers */
+	background: -moz-linear-gradient(top,  $start 0%, $end 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start), color-stop(100%,$end)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  $start 0%,$end 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  $start 0%,$end 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  $start 0%,$end 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  $start 0%,$end 100%); /* W3C */
+}
+
+@mixin reflection-gradient($start, $end) {
+	background: $start; /* Old browsers */
+	background: -moz-linear-gradient(top,  $start 0%, $end 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start), color-stop(100%,$end)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  $start 0%,$end 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  $start 0%,$end 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  $start 0%,$end 100%); /* IE10+ */
+	background: linear-gradient(174deg,  rgba(237,238,240,1) 25%,rgba(234,235,237,0) 26%,rgba(0,0,0,0) 100%), linear-gradient(to bottom,  $start 0%,$end 100%); /* W3C */
+}
+
+@mixin button-gradient($start-1, $end-1, $start-2, $end-2) {
+	background: $start-1; /* Old browsers */
+	background: -moz-linear-gradient(top,  $start-1 0%, $end-1 50%, $start-2 51%, $end-2 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start-1), color-stop(50%,$end-1), color-stop(51%,$start-2), color-stop(100%,$end-2)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  $start-1 0%,$end-1 50%,$start-2 51%,$end-2 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  $start-1 0%,$end-1 50%,$start-2 51%,$end-2 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  $start-1 0%,$end-1 50%,$start-2 51%,$end-2 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  $start-1 0%,$end-1 50%,$start-2 51%,$end-2 100%); /* W3C */
+	-pie-background: linear-gradient(top,  $start-1 0%, $end-1 50%, $start-2 51%, $end-2 100%);
+}
+
+
+%clearfix {
+    zoom:1;
+
+    &:before, &:after {
+        content: "\0020";
+        display: block;
+        height: 0;
+        overflow: hidden;
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+
+
+@import "compass/typography/lists/bullets";
+@import "compass/css3/inline-block";
+@import "blueprint/grid";
+@import "compass/css3/border-radius";
+@import "compass/css3/transition";
+
+
+// Grid system
+
+@for $i from 1 through $blueprint-grid-columns {
+	.clmn-#{$i} {
+		@include column($i);
+		@extend %clearfix;
+		width: $i * $blueprint_grid_width; 
+		min-height: 1px;
+		text-align: left;
+	}
+}
+
+.container {
+	width: $blueprint-container-size;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.clmn-append-2 {
+	margin-right: 2 * $blueprint_grid_width + $blueprint-grid-margin;
+}
+
+.clmn-last {
+	margin-right: 0;
+}
+
+// Extra width to fit Константин Константинович Константинопольский
+.clmn-9 {
+	width: 242px;
+}
+
+// Prevent AngularJS flash of template
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
